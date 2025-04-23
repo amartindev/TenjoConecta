@@ -38,6 +38,7 @@ export function AdminDashboardPage() {
     schedule: '',
     whatsapp: '',
     email: '',
+    page: '',
     recommended: false,
   });
 
@@ -252,7 +253,7 @@ export function AdminDashboardPage() {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-800"></div>
       </div>
     );
   }
@@ -571,6 +572,19 @@ export function AdminDashboardPage() {
                   placeholder='Email'
                   value={editForm.email}
                   onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                Página Web
+                </label>
+                <input
+                  type="text"
+                  placeholder='Página Web'
+                  value={editForm.page}
+                  onChange={(e) => setEditForm({ ...editForm, page: e.target.value })}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>

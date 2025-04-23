@@ -19,6 +19,7 @@ export function RegisterPage() {
         schedule: "",
         whatsapp: "",
         email: "",
+        page: "",
     });
 
     // const categories = CATEGORIES;
@@ -216,7 +217,7 @@ export function RegisterPage() {
 
                         <div>
                             <label className='block text-sm font-medium text-gray-700'>
-                                Dirección
+                                Dirección *
                             </label>
                             <input
                                 type='text'
@@ -267,7 +268,7 @@ export function RegisterPage() {
 
                         <div>
                             <label className='block text-sm font-medium text-gray-700'>
-                                Correo Electrónico *
+                                Correo Electrónico
                             </label>
                             <input
                                 type='email'
@@ -275,6 +276,21 @@ export function RegisterPage() {
                                 placeholder="Correo Electrónico"
                                 not-required
                                 value={formData.email}
+                                onChange={handleChange}
+                                className='mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
+                            />
+                        </div>
+
+                        <div>
+                            <label className='block text-sm font-medium text-gray-700'>
+                                Página Web
+                            </label>
+                            <input
+                                type='text'
+                                name='page'
+                                placeholder="Página Web"
+                                not-required
+                                value={formData.page}
                                 onChange={handleChange}
                                 className='mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
                             />

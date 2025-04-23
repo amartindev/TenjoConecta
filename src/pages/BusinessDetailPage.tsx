@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Phone, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Phone, ArrowLeft, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { supabase } from '../lib/supabase';
 import type { Business } from '../types/business';
@@ -106,9 +106,13 @@ export function BusinessDetailPage() {
           Volver al inicio
         </Link>
 
-        <div className=" bg-gradient-to-r from-[rgba(185,2,26,0.1)] via-[rgba(255,217,0,0.1)] to-[rgba(2,105,48,0.1)] backdrop-blur-xl rounded-xl shadow-xl overflow-hidden">
+        <div className=" bg-gradient-to-r from-[rgba(185,2,26,0.2)] via-[rgba(255,217,0,0.2)] to-[rgba(2,105,48,0.2)] backdrop-blur-xl rounded-xl shadow-xl overflow-hidden">
           {/* Photo Gallery */}
           <div className="relative h-96">
+          {business.recommended &&         
+        <div className="absolute top-4 left-4">
+          <Star className="w-7 h-7 text-tenjo-gold fill-tenjo-gold animate-pulse transition-all duration-300 stroke-black stroke-1 filter drop-shadow-lg"/>
+        </div>}
             {photos.length > 0 && (
               <>
                 <img
@@ -165,18 +169,26 @@ export function BusinessDetailPage() {
             <p className="text-lg text-gray-600 mb-6">{business.description}</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-              <div>
+              {business.address && <div>
                 <h2 className="text-lg font-semibold text-gray-900 mb-2">Ubicación</h2>
                 <p className="text-gray-600">{business.address}</p>
               </div>
-              
+              }
+              {business.schedule && 
               <div>
                 <h2 className="text-lg font-semibold text-gray-900 mb-2">Horario</h2>
                 <p className="text-gray-600">{business.schedule}</p>
               </div>
+              }
+              {business.page && 
               <div>
-                <h2 className="text-lg font-semibold text-gray-900 mb-2">Telefono</h2>
-                <p className="text-gray-600">{business.whatsapp}</p>
+                <h2 className="text-lg font-semibold text-gray-900 mb-2">Página </h2>
+                <p className="text-gray-600">{business.page}</p>
+              </div>
+              }
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900 mb-2">Teléfono</h2>
+                <p className="text-gray-600">+57 {business.whatsapp}</p>
               </div>
             </div>
 

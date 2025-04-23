@@ -20,11 +20,11 @@ export default {
         tenjo: {
           red: '#C8102E',
           green: '#007A33',
-          gold: '#FFD700'
-        }
+          gold: '#FFD700',
+        },
       },
-      fontFamily: {
-        sans: ['Inter var', 'sans-serif'],
+      boxShadow: {
+        'gold-premium': '1px 1px 1px 1px rgba(0, 0, 0, 1)', // Sombra dorada para un efecto premium
       },
     },
   },

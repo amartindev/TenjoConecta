@@ -89,7 +89,7 @@ export function Navbar() {
             </form>
             <Link
               to="/register"
-              className="block px-3 py-2 rounded-md text-base font-medium text-white bg-yellow-500 hover:bg-yellow-600"
+              className="block px-3 py-2 rounded-md text-center font-medium text-white bg-yellow-500 hover:bg-yellow-600"
             >
               Registrar Negocio
             </Link>

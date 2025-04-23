@@ -113,7 +113,7 @@ export function HomePage() {
                         query = query.or(conditions.join(","));
                     }
                 }
-
+                query = query.order("recommended", { ascending: false });
                 const { data, error } = await query;
 
                 if (error) throw error;
@@ -174,6 +174,8 @@ export function HomePage() {
             />
 
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>
+            {!searchQuery &&
+            !loading &&
                 <div className='text-center mb-12'>
                     <h1 className='text-4xl font-bold text-gray-900 mb-4'>
                         Todo lo que necesitas en Tenjo, a un clic de distancia
@@ -184,7 +186,7 @@ export function HomePage() {
                         recibe en la puerta de tu casa. ¡Apoyemos el comercio
                         local!
                     </p>
-                </div>
+                </div>}
 
                 {/* Search Bar */}
                 <div className='max-w-2xl mx-auto mb-8'>
@@ -223,11 +225,6 @@ export function HomePage() {
                     mergedFeaturedBusinesses.length > 0 && (
                         <div className='mb-16'>
                             <div className='flex items-center justify-center gap-2 mb-8'>
-                                <img
-                                    src='/ruta/a/tu/imagen-dorada.jpg'
-                                    alt='Golden texture'
-                                    className='absolute inset-0 w-full h-full object-cover'
-                                />
                                 <Star className='h-6 w-6 text-yellow-400 fill-current' />
                                 <h2 className='text-2xl font-bold text-gray-900'>
                                     Negocios Recomendados

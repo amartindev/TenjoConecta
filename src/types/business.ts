@@ -5,6 +5,7 @@ export interface Business {
   category: string;
   address: string;
   schedule: string;
+  page:string;
   whatsapp: string;
   email: string;
   status: 'pending' | 'approved' | 'paused' | 'rejected';
