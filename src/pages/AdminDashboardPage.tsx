@@ -409,6 +409,7 @@ export function AdminDashboardPage() {
               <h2 className="text-2xl font-bold">Imágenes de {selectedBusiness.name}</h2>
               <button
                 onClick={() => setShowImageModal(false)}
+                aria-label='cerrar'
                 className="text-gray-500 hover:text-gray-700"
               >
                 <XCircle className="h-6 w-6" />
@@ -470,6 +471,7 @@ export function AdminDashboardPage() {
               <h2 className="text-2xl font-bold">Editar {selectedBusiness.name}</h2>
               <button
                 onClick={() => setShowEditModal(false)}
+                aria-label='cerrar'
                 className="text-gray-500 hover:text-gray-700"
               >
                 <XCircle className="h-6 w-6" />
@@ -483,6 +485,7 @@ export function AdminDashboardPage() {
                 </label>
                 <input
                   type="text"
+                  placeholder='Nombre'
                   value={editForm.name}
                   onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -495,6 +498,7 @@ export function AdminDashboardPage() {
                 </label>
                 <select
                   value={editForm.category}
+                  aria-label='Categoría'
                   onChange={(e) => setEditForm({ ...editForm, category: e.target.value })}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 >
@@ -512,6 +516,7 @@ export function AdminDashboardPage() {
                 </label>
                 <textarea
                   value={editForm.description}
+                  placeholder='Descripción'
                   onChange={(e) => setEditForm({ ...editForm, description: e.target.value })}
                   rows={4}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -524,6 +529,7 @@ export function AdminDashboardPage() {
                 </label>
                 <input
                   type="text"
+                  placeholder='Dirección'
                   value={editForm.address}
                   onChange={(e) => setEditForm({ ...editForm, address: e.target.value })}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -536,6 +542,7 @@ export function AdminDashboardPage() {
                 </label>
                 <input
                   type="text"
+                  placeholder='Horario'
                   value={editForm.schedule}
                   onChange={(e) => setEditForm({ ...editForm, schedule: e.target.value })}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -548,6 +555,7 @@ export function AdminDashboardPage() {
                 </label>
                 <input
                   type="text"
+                  placeholder='WhatsApp'
                   value={editForm.whatsapp}
                   onChange={(e) => setEditForm({ ...editForm, whatsapp: e.target.value })}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -560,6 +568,7 @@ export function AdminDashboardPage() {
                 </label>
                 <input
                   type="email"
+                  placeholder='Email'
                   value={editForm.email}
                   onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
@@ -572,6 +581,7 @@ export function AdminDashboardPage() {
                 </label>
                 <input
                   type="checkbox"
+                  aria-label='recommended'
                   checked={editForm.recommended}
                   onChange={(e) =>
                     setEditForm({ ...editForm, recommended: e.target.checked })

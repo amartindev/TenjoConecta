@@ -229,6 +229,7 @@ export function HomePage() {
                               window.open(`https://wa.me/57${business.whatsapp}?text=${message}`, '_blank');
                             }}
                             className="inline-flex items-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors"
+                            aria-label='Boton Whatsapp'
                           >
                             Contactar por WhatsApp
                           </button>
@@ -261,6 +262,7 @@ export function HomePage() {
                   <button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
+                    aria-label='index'
                     className={`w-3 h-3 rounded-full transition-all ${
                       currentSlide === index
                         ? 'bg-blue-600 w-6'
