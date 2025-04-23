@@ -16,7 +16,7 @@ export function BusinessCard({ business }: BusinessCardProps) {
   return (
     <Link 
       to={`/business/${business.id}`}
-      className="block bg-gradient-to-r from-[rgba(185,2,26,0.2)] via-[rgba(255,217,0,0.2)] to-[rgba(2,105,48,0.2)] backdrop-blur-xl rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl"
+      className="block bg-gradient-to-r from-[rgba(185,2,26,0.1)] via-[rgba(255,217,0,0.1)] to-[rgba(2,105,48,0.1)] backdrop-blur-xl rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl"
     >
       <div className="relative h-48">
         <img
@@ -30,9 +30,11 @@ export function BusinessCard({ business }: BusinessCardProps) {
             {business.category}
           </span>
         </div>
+        {business.recommended &&         
         <div className="absolute top-4 left-4">
-           <Star className="w-6 h-6 text-yellow-500 fill-yellow-500 hover:scale-125"/>
-        </div>
+           <Star className="w-7 h-7 text-tenjo-gold fill-yellow-400 animate-pulse hover:scale-125"/>
+        </div>}
+
       </div>
       
       <div className="p-6 ">

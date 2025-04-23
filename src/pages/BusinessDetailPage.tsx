@@ -106,7 +106,7 @@ export function BusinessDetailPage() {
           Volver al inicio
         </Link>
 
-        <div className="bg-white rounded-xl shadow-xl overflow-hidden">
+        <div className=" bg-gradient-to-r from-[rgba(185,2,26,0.1)] via-[rgba(255,217,0,0.1)] to-[rgba(2,105,48,0.1)] backdrop-blur-xl rounded-xl shadow-xl overflow-hidden">
           {/* Photo Gallery */}
           <div className="relative h-96">
             {photos.length > 0 && (
@@ -159,7 +159,7 @@ export function BusinessDetailPage() {
             </div>
           </div>
 
-          <div className="p-6 sm:p-8">
+          <div className="p-6 sm:p-8 shadow-lg">
             <h1 className="text-3xl font-bold text-gray-900 mb-4">{business.name}</h1>
             
             <p className="text-lg text-gray-600 mb-6">{business.description}</p>
