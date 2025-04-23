@@ -225,7 +225,7 @@ export function HomePage() {
                           <p className="text-lg mb-4">{business.description}</p>
                           <button
                             onClick={() => {
-                              const message = encodeURIComponent(`¡Hola! Los contacto desde Tenjo Conecta. Me gustaría obtener información sobre ${business.name}`);
+                              const message = encodeURIComponent(`¡Hola! Los contacto desde Tenjo Conecta.`);
                               window.open(`https://wa.me/57${business.whatsapp}?text=${message}`, '_blank');
                             }}
                             className="inline-flex items-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors"

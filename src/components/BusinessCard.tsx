@@ -9,7 +9,7 @@ interface BusinessCardProps {
 export function BusinessCard({ business }: BusinessCardProps) {
   const handleWhatsAppClick = (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent card click from triggering
-    const message = encodeURIComponent(`¡Hola! Los contacto desde Tenjo Conecta. Me gustaría obtener información sobre ${business.name}`);
+    const message = encodeURIComponent(`¡Hola! Los contacto desde Tenjo Conecta.`);
     window.open(`https://wa.me/57${business.whatsapp}?text=${message}`, '_blank');
   };
 

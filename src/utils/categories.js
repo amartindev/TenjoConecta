@@ -3,7 +3,9 @@ export const CATEGORIES = [
     'Servicios',
     'Productos',
     'Tiendas',
+    'Mascotas',
     'Salud',
+    'Belleza',
     'Educación',
     'Entretenimiento',
     'Tecnología'
