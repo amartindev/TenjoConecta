@@ -17,6 +17,11 @@ export default {
           900: '#0c4a6e',
           950: '#082f49',
         },
+        tenjo: {
+          red: '#C8102E',
+          green: '#007A33',
+          gold: '#FFD700'
+        }
       },
       fontFamily: {
         sans: ['Inter var', 'sans-serif'],

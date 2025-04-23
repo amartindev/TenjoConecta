@@ -78,25 +78,31 @@ export function HomePage() {
         }
 
         if (searchQuery) {
+          const normalize = (str: string) =>
+            str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        
           const searchTerms = searchQuery.toLowerCase().split(' ');
-          const conditions = [];
-
+          const conditions: string[] = [];
+        
           for (const term of searchTerms) {
+            const termNormalized = normalize(term);
             const relatedCategories = keywords[term as keyof typeof keywords];
             
             if (relatedCategories) {
               const cats = Array.isArray(relatedCategories) ? relatedCategories : [relatedCategories];
               conditions.push(...cats.map(cat => `category.eq.${cat}`));
             } else {
-              conditions.push(`name.ilike.%${term}%`);
-              conditions.push(`description.ilike.%${term}%`);
+              conditions.push(`name_unaccent.ilike.%${termNormalized}%`);
+              conditions.push(`description_unaccent.ilike.%${termNormalized}%`);
             }
           }
-
+        
           if (conditions.length > 0) {
             query = query.or(conditions.join(','));
           }
         }
+        
+        
 
         const { data, error } = await query;
 
