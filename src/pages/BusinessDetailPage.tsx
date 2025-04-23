@@ -70,7 +70,7 @@ export function BusinessDetailPage() {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-800"></div>
       </div>
     );
   }
@@ -100,7 +100,7 @@ export function BusinessDetailPage() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <Link
           to="/"
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6"
+          className="inline-flex items-center text-green-800 hover:text-green-900 mb-6"
         >
           <ArrowLeft className="h-5 w-5 mr-2" />
           Volver al inicio
@@ -153,7 +153,7 @@ export function BusinessDetailPage() {
               </>
             )}
             <div className="absolute top-4 right-4">
-              <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
+              <span className="px-3 py-1 bg-green-800 text-white text-sm font-medium rounded-full">
                 {business.category}
               </span>
             </div>

@@ -20,7 +20,7 @@ export function Navbar() {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
             <img src="/link.png" alt="logo" className='max-h-10 px-2' />
-              <span className="text-2xl font-bold text-blue-600">
+              <span className="text-2xl font-bold bg-gradient-to-r from-[#B9021A] via-[#FFD900] to-[#026930] bg-clip-text text-transparent">
                 Tenjo Conecta
                 </span>
             </Link>
@@ -34,21 +34,21 @@ export function Navbar() {
                 placeholder="Buscar negocios, productos, servicios..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-96 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-96 px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
               <button type="submit" className="absolute right-3 top-2.5" aria-label='Buscar negocios, productos, servicios ...'>
-                <Search className="h-5 w-5 text-gray-400 hover:text-blue-500" />
+                <Search className="h-5 w-5 text-gray-400 hover:text-yellow-500" />
               </button>
             </form>
             <Link
               to="/register"
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-500 hover:bg-yellow-600"
             >
               Registrar Negocio
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors"
+              className="inline-flex items-center px-4 py-2 bg-green-800 hover:bg-green-900 text-white rounded-lg transition-colors"
             >
               <Phone className="h-4 w-4 mr-2" />
               Contacto
@@ -59,7 +59,7 @@ export function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500"
             >
               {isMenuOpen ? (
                 <X className="block h-6 w-6" />
@@ -81,21 +81,21 @@ export function Navbar() {
                 placeholder="Buscar negocios, productos, servicios..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
               <button type="submit" className="absolute right-6 top-4.5" aria-label='Buscar negocios, productos, servicios ...'>
-                <Search className="h-5 w-5 text-gray-400 hover:text-blue-500" />
+                <Search className="h-5 w-5 text-gray-400 hover:text-yellow-500" />
               </button>
             </form>
             <Link
               to="/register"
-              className="block px-3 py-2 rounded-md text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
+              className="block px-3 py-2 rounded-md text-base font-medium text-white bg-yellow-500 hover:bg-yellow-600"
             >
               Registrar Negocio
             </Link>
             <Link
               to="/contact"
-              className="block px-3 py-2 rounded-md text-base font-medium text-white bg-green-500 hover:bg-green-600"
+              className="block px-3 py-2 rounded-md text-base font-medium text-white bg-green-800 hover:bg-green-900"
             >
               <div className="flex items-center justify-center">
                 <Phone className="h-4 w-4 mr-2" />

@@ -1,4 +1,4 @@
-import { Phone } from 'lucide-react';
+import { Phone, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { Business } from '../types/business';
 
@@ -16,7 +16,7 @@ export function BusinessCard({ business }: BusinessCardProps) {
   return (
     <Link 
       to={`/business/${business.id}`}
-      className="block bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl"
+      className="block bg-gradient-to-r from-[rgba(185,2,26,0.2)] via-[rgba(255,217,0,0.2)] to-[rgba(2,105,48,0.2)] backdrop-blur-xl rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl"
     >
       <div className="relative h-48">
         <img
@@ -26,18 +26,21 @@ export function BusinessCard({ business }: BusinessCardProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         <div className="absolute top-4 right-4">
-          <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full shadow-lg">
+          <span className="px-3 py-1 bg-green-800 text-white text-sm font-medium rounded-full shadow-lg">
             {business.category}
           </span>
         </div>
+        <div className="absolute top-4 left-4">
+           <Star className="w-6 h-6 text-yellow-500 fill-yellow-500 hover:scale-125"/>
+        </div>
       </div>
       
-      <div className="p-6">
+      <div className="p-6 ">
         <h3 className="text-xl font-semibold text-gray-900 mb-2">{business.name}</h3>
         <p className="text-gray-600 line-clamp-2 mb-4">{business.description}</p>
         
         <div className="flex items-center justify-between">
-          <span className="text-blue-600 hover:text-blue-800 font-medium transition-colors">
+          <span className="text-green-800 hover:text-green-900 font-medium transition-colors">
             Ver más
           </span>
           

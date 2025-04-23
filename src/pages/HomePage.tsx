@@ -192,12 +192,12 @@ export function HomePage() {
               name="search"
               defaultValue={searchQuery}
               placeholder="Buscar negocios, productos, servicios..."
-              className="w-full px-4 py-3 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-4 py-3 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
             />
             <button 
               type="submit"
               aria-label='Buscar negocios, productos, servicios...'
-              className="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-blue-500"
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-yellow-500"
             >
               <Search className="h-5 w-5" />
             </button>
@@ -226,7 +226,7 @@ export function HomePage() {
                           className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                        <div className="absolute bottom-0 left-0 right-0 p-20 pb-7  text-white">
                           <h3 className="text-3xl font-bold mb-2">{business.name}</h3>
                           <p className="text-lg mb-4">{business.description}</p>
                           <button
@@ -271,7 +271,7 @@ export function HomePage() {
                     aria-label='index'
                     className={`w-3 h-3 rounded-full transition-all ${
                       currentSlide === index
-                        ? 'bg-blue-600 w-6'
+                        ? 'bg-green-800 w-6'
                         : 'bg-gray-300 hover:bg-gray-400'
                     }`}
                   />
@@ -288,7 +288,7 @@ export function HomePage() {
             aria-label='Todas las categorias'
             className={`px-4 py-2 rounded-full transition-all transform hover:scale-105 ${
               selectedCategory === 'all'
-                ? 'bg-blue-600 text-white shadow-lg'
+                ? 'bg-green-800 text-white shadow-lg'
                 : 'bg-white text-gray-700 hover:bg-gray-50 shadow'
             }`}
           >
@@ -301,7 +301,7 @@ export function HomePage() {
               onClick={() => setSelectedCategory(category)}
               className={`px-4 py-2 rounded-full transition-all transform hover:scale-105 ${
                 selectedCategory === category
-                  ? 'bg-blue-600 text-white shadow-lg'
+                  ? 'bg-green-800 text-white shadow-lg'
                   : 'bg-white text-gray-700 hover:bg-gray-50 shadow'
               }`}
             >
