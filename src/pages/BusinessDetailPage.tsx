@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Phone, ArrowLeft, ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { Phone, ArrowLeft, ChevronLeft, ChevronRight, Star, BookDown  } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { supabase } from '../lib/supabase';
 import type { Business } from '../types/business';
@@ -190,6 +190,19 @@ export function BusinessDetailPage() {
                 <h2 className="text-lg font-semibold text-gray-900 mb-2">Teléfono</h2>
                 <p className="text-gray-600">+57 {business.whatsapp}</p>
               </div>
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg transition-colors"
+              >
+                <BookDown className="h-5 w-5 mr-2" />
+                Menú o Catálogo
+              </a>
+              </div>
+
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">

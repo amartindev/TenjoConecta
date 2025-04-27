@@ -23,9 +23,18 @@ export interface BusinessImage {
   is_main: boolean;
   created_at: string;
 }
+export interface BusinessPdf {
+  id: string;
+  business_id: string;
+  url: string;
+  storage_path: string;
+  created_at: string;
+}
 
 export type BusinessFormData = Omit<Business, 'id' | 'status' | 'recommended' | 'created_at' | 'updated_at' | 'image_url'>;
 
-export interface BusinessWithImages extends Business {
+export interface BusinessExtended extends Business {
   images: BusinessImage[];
+  pdf?: BusinessPdf | null;
+
 }

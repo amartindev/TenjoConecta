@@ -11,6 +11,7 @@ export function RegisterPage() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+    const [selectedPdf, setSelectedPdf] = useState<File | null>(null);
     const [formData, setFormData] = useState<BusinessFormData>({
         name: "",
         description: "",
@@ -90,6 +91,49 @@ export function RegisterPage() {
                 }
             }
 
+
+            if (selectedPdf && business) {
+                const file = selectedPdf;
+                const fileName = `${Date.now()}.pdf`;
+                const filePath = `${business.id}/${fileName}`;
+            
+                const { error: uploadError } = await supabase.storage
+                    .from("businesspdf")
+                    .upload(filePath, file);
+            
+                if (uploadError) {
+                    await supabase
+                        .from("businesses")
+                        .delete()
+                        .eq("id", business.id);
+                    throw uploadError;
+                }
+            
+                const {
+                    data: { publicUrl },
+                } = supabase.storage
+                    .from("businesspdf")
+                    .getPublicUrl(filePath);
+            
+                const { error: pdfError } = await supabase
+                    .from("business_pdf")
+                    .insert({
+                        business_id: business.id,
+                        url: publicUrl,
+                        storage_path: filePath
+                    });
+            
+                if (pdfError) {
+                    await supabase
+                        .from("businesses")
+                        .delete()
+                        .eq("id", business.id);
+                    throw pdfError;
+                }
+            }
+            
+
+
             toast.success("Solicitud enviada con éxito");
             navigate("/");
         } catch (error) {
@@ -140,6 +184,25 @@ export function RegisterPage() {
             setSelectedFiles((prev) => [...prev, ...validFiles]);
             toast.success(`${validFiles.length} imagen(es) seleccionada(s)`);
         }
+    };
+
+    const handlePdfChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+    
+        if (!file) return;
+    
+        if (file.type !== "application/pdf") {
+            toast.error(`El archivo ${file.name} no es un PDF válido`);
+            return;
+        }
+    
+        if (file.size > 10 * 1024 * 1024) {
+            toast.error(`El archivo ${file.name} excede los 10MB`);
+            return;
+        }
+    
+        setSelectedPdf(file);
+        toast.success(`Archivo ${file.name} cargado exitosamente`);
     };
 
     const removeImage = (index: number) => {
@@ -223,7 +286,7 @@ export function RegisterPage() {
                                 type='text'
                                 name='address'
                                 placeholder="Dirección"
-                                not-required
+                                
                                 value={formData.address}
                                 onChange={handleChange}
                                 className='mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
@@ -274,7 +337,7 @@ export function RegisterPage() {
                                 type='email'
                                 name='email'
                                 placeholder="Correo Electrónico"
-                                not-required
+                                
                                 value={formData.email}
                                 onChange={handleChange}
                                 className='mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
@@ -289,7 +352,7 @@ export function RegisterPage() {
                                 type='text'
                                 name='page'
                                 placeholder="Página Web"
-                                not-required
+                                
                                 value={formData.page}
                                 onChange={handleChange}
                                 className='mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500'
@@ -334,6 +397,20 @@ export function RegisterPage() {
                                     ))}
                                 </div>
                             )}
+                        </div>
+
+                        {/* Carga del archivo */}
+                        <div>
+                        <label className='block text-sm font-medium text-gray-700'>
+                                Menú o Catálogo del negocio
+                            </label>
+                            <input
+                                type='file'
+                                aria-label="Menú o Catálogo del negocio"
+                                accept='.pdf'
+                                onChange={handlePdfChange}
+                                className='mt-1'
+                            />
                         </div>
 
                         <div>
