@@ -11,6 +11,7 @@ export interface Business {
   status: 'pending' | 'approved' | 'paused' | 'rejected';
   recommended: boolean;
   image_url: string;
+  pdf_url: string;
   created_at: string;
   updated_at: string;
 }

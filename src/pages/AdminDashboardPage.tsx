@@ -22,7 +22,7 @@ import {
 } from "../lib/supabase";
 import type { BusinessExtended, BusinessImage, BusinessPdf } from "../types/business";
 import { CATEGORIES } from "../utils/categories";
-import { PdfModal } from "../components/admin/pdfModal";
+import { PdfModal } from "../components/admin/PdfModal";
 import { ImageModal } from "../components/admin/ImageModal";
 import { EditModal } from "../components/admin/EditModal";
 
@@ -331,6 +331,65 @@ export function AdminDashboardPage() {
     }
   }
 
+
+
+const handleUploadImage = async (business: BusinessExtended): Promise<void> => {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = "image/*";
+
+  input.onchange = async (e: Event) => {
+    const file = (e.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+
+    const filePath = `${business.id}/${Date.now()}_${file.name}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from("businessimages")
+      .upload(filePath, file);
+
+    if (uploadError) {
+      console.error("Error subiendo imagen:", uploadError.message);
+      toast.error("Error subiendo la imagen.");
+      return;
+    }
+
+    const { data: publicUrlData } = supabase.storage
+      .from("businessimages")
+      .getPublicUrl(filePath);
+
+    const publicUrl = publicUrlData.publicUrl;
+
+    const { data: newImage, error: insertError } = await supabase
+      .from("business_images")
+      .insert({
+        business_id: business.id,
+        url: publicUrl,
+        storage_path: filePath,
+        is_main: false,
+      })
+      .select("*")
+      .single();
+      toast.success("Imagen subida correctamente.");
+
+    if (insertError) {
+      console.error("Error guardando imagen en BD:", insertError.message);
+      toast.error("Error guardando imagen en la base de datos.");
+      return;
+    }
+
+    setBusinesses((prev) =>
+      prev.map((b) =>
+        b.id === business.id
+          ? { ...b, images: [...b.images, newImage] }
+          : b
+      )
+    );
+  };
+
+  input.click();
+};
+
   if (loading) {
     return (
       <div className='flex justify-center items-center min-h-screen'>
@@ -500,6 +559,7 @@ export function AdminDashboardPage() {
           handleSetMainImage={handleSetMainImage}
           handleDownloadImage={handleDownloadImage}
           handleDeleteImage={handleDeleteImage}
+          handleUploadImage={handleUploadImage}
         />
       )}
 

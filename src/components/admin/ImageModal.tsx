@@ -6,6 +6,7 @@ type ImageModalProps = {
   setShowImageModal: (show: boolean) => void;
   handleSetMainImage: (business: BusinessExtended, image: BusinessImage) => Promise<void>;
   handleDownloadImage: (image: BusinessImage) => Promise<void>;
+  handleUploadImage: (business: BusinessExtended) => Promise<void>;
   handleDeleteImage: (business: BusinessExtended, image: BusinessImage) => Promise<void>;
 };
 
@@ -15,6 +16,7 @@ export function ImageModal({
   handleSetMainImage,
   handleDownloadImage,
   handleDeleteImage,
+  handleUploadImage,
 }: ImageModalProps) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -73,6 +75,14 @@ export function ImageModal({
               )}
             </div>
           ))}
+        </div>
+        <div className="mt-4 flex justify-end">
+          <button
+            onClick={() => handleUploadImage(selectedBusiness)}
+            className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+          >
+            Subir Imagen
+          </button>
         </div>
       </div>
     </div>

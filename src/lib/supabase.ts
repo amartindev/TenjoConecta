@@ -7,44 +7,6 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// Subir imagen
-export async function uploadBusinessImage(file: File, businessId: string): Promise<BusinessImage | null> {
-  try {
-    const fileExt = file.name.split('.').pop();
-    const fileName = `${Date.now()}-${Math.random()}.${fileExt}`;
-    const filePath = `${businessId}/${fileName}`;
-
-    const { error: uploadError } = await supabase.storage
-      .from('businessimages') // <- nombre del bucket
-      .upload(filePath, file);
-
-    if (uploadError) throw uploadError;
-
-    const { data: publicUrlData } = supabase.storage
-      .from('businessimages')
-      .getPublicUrl(filePath);
-
-    const publicUrl = publicUrlData.publicUrl;
-
-    const { data: imageData, error: insertError } = await supabase
-      .from('business_images')
-      .insert({
-        business_id: businessId,
-        url: publicUrl,
-        storage_path: filePath,
-        is_main: false
-      })
-      .select()
-      .single();
-
-    if (insertError) throw insertError;
-
-    return imageData;
-  } catch (error) {
-    console.error('Error uploading image:', error);
-    return null;
-  }
-}
 
 // Eliminar imagen individual
 export async function deleteBusinessImage(image: BusinessImage): Promise<boolean> {
