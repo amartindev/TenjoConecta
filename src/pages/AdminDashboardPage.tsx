@@ -60,7 +60,8 @@ export function AdminDashboardPage() {
       const {
         data: { user },
       } = await supabase.auth.getUser();
-      if (!user || user.email !== "amartindev02@gmail.com") {
+      const adminEmail = import.meta.env.VITE_ADMIN_EMAIL;
+      if (!user || user.email !== adminEmail) {
         navigate("/admin");
         return;
       }
