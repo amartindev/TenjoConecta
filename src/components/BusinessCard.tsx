@@ -30,7 +30,7 @@ export function BusinessCard({ business }: BusinessCardProps) {
             {business.category}
           </span>
         </div>
-        {business.recommended &&         
+        {business.isPremium &&         
         <div className="absolute top-4 left-4">
           <Star className="w-7 h-7 text-tenjo-gold fill-tenjo-gold animate-pulse transition-all duration-300 stroke-black stroke-1 filter drop-shadow-lg"/>
         </div>}

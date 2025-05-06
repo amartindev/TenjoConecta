@@ -118,7 +118,7 @@ export function BusinessDetailPage() {
         <div className=' bg-gradient-to-r from-[rgba(185,2,26,0.2)] via-[rgba(255,217,0,0.2)] to-[rgba(2,105,48,0.2)] backdrop-blur-xl rounded-xl shadow-xl overflow-hidden'>
           {/* Photo Gallery */}
           <div className='relative h-96'>
-            {business.recommended && (
+            {business.isPremium && (
               <div className='absolute top-4 left-4'>
                 <Star className='w-7 h-7 text-tenjo-gold fill-tenjo-gold animate-pulse transition-all duration-300 stroke-black stroke-1 filter drop-shadow-lg' />
               </div>

@@ -9,7 +9,9 @@ export interface Business {
   whatsapp: string;
   email: string;
   status: 'pending' | 'approved' | 'paused' | 'rejected';
-  recommended: boolean;
+  isPremium: boolean;
+  premiumStartDate: Date | null;
+  premiumEndDate: Date | null;
   image_url: string;
   pdf_url: string;
   created_at: string;
@@ -32,7 +34,7 @@ export interface BusinessPdf {
   created_at: string;
 }
 
-export type BusinessFormData = Omit<Business, 'id' | 'status' | 'recommended' | 'created_at' | 'updated_at' | 'image_url'>;
+export type BusinessFormData = Omit<Business, 'id' | 'status' | 'isPremium' | 'created_at' | 'updated_at' | 'image_url'>;
 
 export interface BusinessExtended extends Business {
   images: BusinessImage[];

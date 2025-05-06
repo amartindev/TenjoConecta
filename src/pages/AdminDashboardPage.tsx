@@ -43,7 +43,9 @@ export function AdminDashboardPage() {
     whatsapp: "",
     email: "",
     page: "",
-    recommended: false,
+    isPremium: false,
+    premiumStartDate: null as Date | null,
+    premiumEndDate: null as Date | null,
   });
 
   const categories = CATEGORIES;
@@ -135,7 +137,13 @@ export function AdminDashboardPage() {
       whatsapp: business.whatsapp,
       email: business.email,
       page: business.page,
-      recommended: business.recommended,
+      isPremium: business.isPremium,
+      premiumStartDate: business.premiumStartDate
+        ? new Date(business.premiumStartDate)
+        : null,
+      premiumEndDate: business.premiumEndDate
+        ? new Date(business.premiumEndDate)
+        : null,
     });
     setShowEditModal(true);
   }

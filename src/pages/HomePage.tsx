@@ -55,7 +55,7 @@ export function HomePage() {
                     .from("businesses")
                     .select("*")
                     .eq("status", "approved")
-                    .eq("recommended", true)
+                    .eq("isPremium", true)
                     .limit(10);
 
                 if (error) throw error;
@@ -113,7 +113,7 @@ export function HomePage() {
                         query = query.or(conditions.join(","));
                     }
                 }
-                query = query.order("recommended", { ascending: false });
+                query = query.order("isPremium", { ascending: false });
                 const { data, error } = await query;
 
                 if (error) throw error;
