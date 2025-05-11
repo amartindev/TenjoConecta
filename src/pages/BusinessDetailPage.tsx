@@ -222,7 +222,8 @@ export function BusinessDetailPage() {
                 href={whatsappUrl}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='inline-flex items-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors'
+                data-business-name={business.name}
+                className='btn-card-detail-whatsapp inline-flex items-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors'
               >
                 <Phone className='h-5 w-5 mr-2' />
                 Contactar por WhatsApp
