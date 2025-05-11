@@ -4,7 +4,7 @@ import { SEO } from '../components/SEO';
 export function ContactPage() {
   const handleWhatsAppContact = () => {
     const message = encodeURIComponent('¡Hola! Me gustaría obtener más información sobre Tenjo Conecta');
-    window.open(`https://wa.me/573192079215?text=${message}`, '_blank');
+    window.open(`https://wa.me/573222104408?text=${message}`, '_blank');
   };
 
   return (
