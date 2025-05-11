@@ -48,7 +48,8 @@ export function BusinessCard({ business }: BusinessCardProps) {
           
           <button
             onClick={handleWhatsAppClick}
-            className="inline-flex items-center px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors shadow-md hover:shadow-lg"
+            data-business-name={business.name}
+            className="btn-card-whatsapp inline-flex items-center px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors shadow-md hover:shadow-lg"
           >
             <Phone className="h-4 w-4 mr-2" />
             WhatsApp
