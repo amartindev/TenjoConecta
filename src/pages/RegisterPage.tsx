@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { Upload } from "lucide-react";
@@ -6,12 +6,15 @@ import { SEO } from "../components/SEO";
 import { supabase } from "../lib/supabase";
 import type { BusinessFormData } from "../types/business";
 import { CATEGORIES } from "../utils/categories";
+import { SuccessModal } from "../components/SuccessModal";
+
 
 export function RegisterPage() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
     const [selectedPdf, setSelectedPdf] = useState<File | null>(null);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [formData, setFormData] = useState<BusinessFormData>({
         name: "",
         description: "",
@@ -135,7 +138,7 @@ export function RegisterPage() {
 
 
             toast.success("Solicitud enviada con éxito");
-            navigate("/");
+            setShowSuccessModal(true);
         } catch (error) {
             console.error("Error:", error);
             toast.error("Error al enviar la solicitud");
@@ -208,6 +211,10 @@ export function RegisterPage() {
     const removeImage = (index: number) => {
         setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
     };
+    
+      useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
 
     return (
         <>
@@ -426,6 +433,11 @@ export function RegisterPage() {
                     </form>
                 </div>
             </div>
+            <SuccessModal isOpen={showSuccessModal} onClose={() => {
+  setShowSuccessModal(false);
+  navigate("/");
+}} />
+
         </>
     );
 }

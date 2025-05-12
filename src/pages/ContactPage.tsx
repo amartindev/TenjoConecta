@@ -1,11 +1,16 @@
 import { Phone, Mail, MessageSquare } from 'lucide-react';
 import { SEO } from '../components/SEO';
+import { useEffect } from 'react';
 
 export function ContactPage() {
   const handleWhatsAppContact = () => {
     const message = encodeURIComponent('¡Hola! Me gustaría obtener más información sobre Tenjo Conecta');
     window.open(`https://wa.me/573222104408?text=${message}`, '_blank');
   };
+
+    useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
 
   return (
     <>

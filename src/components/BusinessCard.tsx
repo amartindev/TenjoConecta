@@ -52,7 +52,7 @@ export function BusinessCard({ business }: BusinessCardProps) {
             data-business-name={business.name}
             className="btn-card-whatsapp inline-flex items-center px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors shadow-md hover:shadow-lg"
           >
-            <Phone className="h-4 w-4 mr-2" />
+            <Phone className="h-4 w-4 mr-2"/>
             WhatsApp
           </button>
         </div>

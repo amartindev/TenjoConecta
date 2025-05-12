@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Phone, ArrowLeft, ChevronLeft, ChevronRight, Star, BookDown } from "lucide-react";
 import { SEO } from "../components/SEO";
 import { supabase } from "../lib/supabase";
@@ -11,8 +11,9 @@ interface BusinessPhoto {
 }
 
 export function BusinessDetailPage() {
-  const location = useLocation();
-  const id = location.state?.id;
+  // const location = useLocation();
+  // const id = location.state?.id;
+   const { name } = useParams<{ name: string }>();
   const [business, setBusiness] = useState<Business | null>(null);
   const [photos, setPhotos] = useState<BusinessPhoto[]>([]);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
@@ -20,45 +21,49 @@ export function BusinessDetailPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchBusinessAndPhotos() {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
+
+  useEffect(() => {
+     async function fetchBusinessAndPhotos() {
       try {
-        // Fetch business details
+        // 1. Buscar el negocio por su nombre (slug o nombre limpio)
+        const decodedName = decodeURIComponent(name || "").replace(/-/g, " ");
         const { data: businessData, error: businessError } = await supabase
           .from("businesses")
           .select("*")
-          .eq("id", id)
+          .ilike("name", decodedName)
           .single();
 
         if (businessError) throw businessError;
         setBusiness(businessData);
 
-        // Fetch business photos
+        const businessId = businessData.id;
+
+        // 2. Fetch business photos
         const { data: photosData, error: photosError } = await supabase
           .from("business_images")
           .select("id, url")
-          .eq("business_id", id);
+          .eq("business_id", businessId);
 
         if (photosError) throw photosError;
 
+        // 3. Fetch PDF (menú o catálogo)
         const { data: pdfData, error: pdfError } = await supabase
           .from("business_pdf")
           .select("url")
-          .eq("business_id", id)
-          .single(); // <- asumes que solo hay uno
+          .eq("business_id", businessId)
+          .single();
 
         if (pdfError && pdfError.code !== "PGRST116") throw pdfError;
         if (pdfData?.url) {
           setPdfUrl(pdfData.url);
         }
 
-        // Add the main image to the photos array if it exists
+        // 4. Agregar imagen principal + fotos adicionales
         const allPhotos: BusinessPhoto[] = [];
-        if (businessData.image_url) {
-          allPhotos.push({ id: "main", url: businessData.image_url });
-        }
-        if (photosData) {
-          allPhotos.push(...photosData);
-        }
+        if (businessData.image_url) allPhotos.push({ id: "main", url: businessData.image_url });
+        if (photosData) allPhotos.push(...photosData);
         setPhotos(allPhotos);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -67,10 +72,8 @@ export function BusinessDetailPage() {
       }
     }
 
-    if (id) {
-      fetchBusinessAndPhotos();
-    }
-  }, [id]);
+if (name) fetchBusinessAndPhotos();
+  }, [name]);
 
   const nextPhoto = () => {
     setCurrentPhotoIndex((prev) => (prev + 1) % photos.length);
