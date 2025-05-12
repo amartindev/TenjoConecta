@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Phone, ArrowLeft, ChevronLeft, ChevronRight, Star, BookDown } from "lucide-react";
 import { SEO } from "../components/SEO";
 import { supabase } from "../lib/supabase";
@@ -11,7 +11,8 @@ interface BusinessPhoto {
 }
 
 export function BusinessDetailPage() {
-  const { id } = useParams();
+  const location = useLocation();
+  const id = location.state?.id;
   const [business, setBusiness] = useState<Business | null>(null);
   const [photos, setPhotos] = useState<BusinessPhoto[]>([]);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);

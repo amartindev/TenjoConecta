@@ -245,7 +245,8 @@ export function HomePage() {
                                                 <Link
                                                     key={business.id}
                                                     className='w-full flex-shrink-0'
-                                                    to={`/business/${business.id}`}
+                                                    to={`/business/${encodeURIComponent(business.name)}`}
+                                                    state={{ id: business.id }}
                                                 >
                                                     <div className='relative h-96'>
                                                         <img

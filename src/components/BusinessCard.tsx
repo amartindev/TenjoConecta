@@ -15,7 +15,8 @@ export function BusinessCard({ business }: BusinessCardProps) {
 
   return (
     <Link 
-      to={`/business/${business.id}`}
+      to={`/business/${encodeURIComponent(business.name)}`}
+      state={{ id: business.id }}
       className="block bg-gradient-to-r from-[rgba(185,2,26,0.2)] via-[rgba(255,217,0,0.2)] to-[rgba(2,105,48,0.2)] backdrop-blur-xl rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl"
     >
       <div className="relative h-48">

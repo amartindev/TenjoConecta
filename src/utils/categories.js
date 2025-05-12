@@ -61,7 +61,7 @@ export const KEYWORDS = {
     // 'producto artesanal': 'Productos',
     
     // // Tiendas
-    // 'tienda': 'Tiendas',
+    'tienda': 'Tiendas',
     // 'supermercado': 'Tiendas',
     // 'ropa': 'Tiendas',
     // 'mercado': 'Tiendas',
@@ -76,7 +76,7 @@ export const KEYWORDS = {
     // 'electrónica': 'Tiendas',
     
     // // Salud
-    // 'medicina': 'Salud',
+    'medicina': 'Salud',
     // 'doctor': 'Salud',
     // 'médico': 'Salud',
     // 'farmacia': 'Salud',
@@ -93,7 +93,7 @@ export const KEYWORDS = {
     // 'enfermedad': 'Salud',
     
     // // Educación
-    // 'escuela': 'Educación',
+    'escuela': 'Educación',
     // 'colegio': 'Educación',
     // 'curso': 'Educación',
     // 'clase': 'Educación',
@@ -109,7 +109,7 @@ export const KEYWORDS = {
     // 'aprendizaje': 'Educación',
     
     // // Entretenimiento
-    // 'entretenimiento': 'Entretenimiento',
+    'entretenimiento': 'Entretenimiento',
     // 'películas': 'Entretenimiento',
     // 'música': 'Entretenimiento',
     // 'videojuegos': 'Entretenimiento',
@@ -122,7 +122,7 @@ export const KEYWORDS = {
     // 'conciertos': 'Entretenimiento',
     
     // // Tecnología
-    // 'tecnología': 'Tecnología',
+    'tecnología': 'Tecnología',
     // 'computador': 'Tecnología',
     // 'celular': 'Tecnología',
     // 'móvil': 'Tecnología',
@@ -143,6 +143,10 @@ export const KEYWORDS = {
     // 'innovación': 'Tecnología',
     // 'programación': 'Tecnología',
     // 'código': 'Tecnología'
+
+    'mascota': 'Mascotas',
+    'perro': 'Mascotas',
+
 };
 
   
