@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
 
 export function Footer() {
+  const whatsappUrl = `https://wa.me/573222104408?text=Hola,%20tengo%20dudas%20sobre%20Tenjo%20Conecta.`;
+
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -58,7 +60,7 @@ export function Footer() {
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-2" />
-                <a href="tel:+573222104408" className="hover:text-white transition-colors">
+                <a href={whatsappUrl} className="hover:text-white transition-colors">
                   +57 322 210 4408
                 </a>
               </li>

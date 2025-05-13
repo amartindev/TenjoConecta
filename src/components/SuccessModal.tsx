@@ -1,6 +1,9 @@
 import { CheckCircle } from "lucide-react";
 
 export function SuccessModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+
+  const whatsappUrl = `https://wa.me/573222104408?text=Hola,%20tengo%20dudas%20sobre%20mi%20registro%20en%20Tenjo%20Conecta.`;
+  
   if (!isOpen) return null;
 
   return (
@@ -32,7 +35,7 @@ export function SuccessModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
           <div className="mt-2 text-gray-700">
             <p className="mb-1">📞 ¿Tienes dudas o necesitas ayuda?</p>
             <p>
-              Escríbenos por WhatsApp <span className="italic">+57 322 210 4408 </span>o al correo:{" "}
+              Escríbenos por WhatsApp <a href={whatsappUrl} className="italic">+57 322 210 4408 </a>o al correo:{" "}
               <a href="mailto:info@tenjoconecta.com" className="text-blue-600 underline">
                 info@tenjoconecta.com
               </a>

@@ -11,8 +11,6 @@ interface BusinessPhoto {
 }
 
 export function BusinessDetailPage() {
-  // const location = useLocation();
-  // const id = location.state?.id;
    const { name } = useParams<{ name: string }>();
   const [business, setBusiness] = useState<Business | null>(null);
   const [photos, setPhotos] = useState<BusinessPhoto[]>([]);
@@ -22,7 +20,7 @@ export function BusinessDetailPage() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, []);
+  }, [name]);
 
   useEffect(() => {
      async function fetchBusinessAndPhotos() {
