@@ -47,7 +47,7 @@ export function ContactPage() {
                       <Phone className="h-6 w-6 text-blue-600" />
                       <div>
                         <p className="text-sm font-medium text-gray-500">WhatsApp</p>
-                        <p className="text-lg font-medium text-gray-900">+57 319 207 9215</p>
+                        <p className="text-lg font-medium text-gray-900">+57 322 210 4408</p>
                       </div>
                     </div>
 
