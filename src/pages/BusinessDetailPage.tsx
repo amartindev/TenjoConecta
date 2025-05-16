@@ -18,6 +18,12 @@ export function BusinessDetailPage() {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [loading, setLoading] = useState(true);
 
+  const handleWhatsAppClick = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent card click from triggering
+    const message = encodeURIComponent(`¡Hola! Los contacto desde tenjoconecta.com`);
+    window.open(`https://wa.me/57${business.whatsapp}?text=${message}`, '_blank');
+  };
+
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [name]);
@@ -221,11 +227,9 @@ if (name) fetchBusinessAndPhotos();
 
             <div className='flex flex-col sm:flex-row items-center justify-between gap-4'>
               <a
-                href={whatsappUrl}
-                target='_blank'
-                rel='noopener noreferrer'
+                onClick={handleWhatsAppClick}
                 data-business-name={business.name}
-                className='btn-card-detail-whatsapp inline-flex items-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors'
+                className='btn-card-detail-whatsapp inline-flex items-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors cursor-pointer'
               >
                 <Phone className='h-5 w-5 mr-2' />
                 Contactar por WhatsApp
