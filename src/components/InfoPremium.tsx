@@ -4,7 +4,7 @@ export default function InfoPremium() {
   const whatsappUrl = `https://wa.me/573222104408?text=Hola,%20tengo%20dudas%20sobre%20mi%20registro%20en%20Tenjo%20Conecta.`;
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
   <div className="flex flex-col gap-4">
     <div className="text-3xl text-center">🎉</div>
     <h2 className="text-xl font-bold text-gray-800 text-center">

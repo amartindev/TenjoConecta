@@ -271,7 +271,7 @@ export function HomePage() {
                                                                 onClick={() => {
                                                                     const message =
                                                                         encodeURIComponent(
-                                                                            `¡Hola! Los contacto desde Tenjo Conecta.`
+                                                                            `¡Hola! Los contacto desde tenjoconecta.com.`
                                                                         );
                                                                     window.open(
                                                                         `https://wa.me/57${business.whatsapp}?text=${message}`,
