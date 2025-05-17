@@ -16,6 +16,7 @@ export function RegisterPage() {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [selectedPdf, setSelectedPdf] = useState<File | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showInfoModal, setShowInfoModal] = useState(false);
   const [formData, setFormData] = useState<BusinessFormData>({
     name: "",
     description: "",
@@ -221,7 +222,29 @@ const sendEmail = () => {
         description='Registra tu negocio en Tenjo Conecta y llega a más clientes.'
         keywords='registro negocio, publicar negocio, tenjo, directorio comercial'
       />
-        <InfoPremium />
+      <button
+  type="button"
+  onClick={() => setShowInfoModal(true)}
+  className="mb-4 text-red-900 underline hover:text-green-800 text-center w-full"
+>
+  ¿Qué es el plan premium?
+</button>
+
+        {showInfoModal && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 relative">
+      <button
+        onClick={() => setShowInfoModal(false)}
+        className="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl"
+        aria-label="Cerrar modal"
+      >
+        &times;
+      </button>
+      <InfoPremium />
+    </div>
+  </div>
+)}
+
       <div className='max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
         <div className='bg-white rounded-2xl shadow-xl p-8'>
           <h1 className='text-3xl font-bold text-gray-900 mb-8 text-center'>Registra tu Negocio</h1>

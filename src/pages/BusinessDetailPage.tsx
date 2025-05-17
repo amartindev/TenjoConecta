@@ -106,8 +106,6 @@ if (name) fetchBusinessAndPhotos();
     );
   }
 
-  const whatsappUrl = `https://wa.me/57${business.whatsapp}`;
-
   return (
     <>
       <SEO
